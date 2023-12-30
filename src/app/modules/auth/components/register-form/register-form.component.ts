@@ -61,9 +61,15 @@ export class RegisterFormComponent {
     if(this.formUser.valid) {
       this.statusUser = 'loading';
       const { email } = this.formUser.getRawValue();
+
+      console.log(email);
+
       this.authService.isAvailable(email)
       .subscribe({
         next: (rta) =>{
+
+          console.log(rta);
+
           this.statusUser = 'success';
           if(rta.isAvailable) {
             this.showRegister = true;

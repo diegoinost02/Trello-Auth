@@ -2,7 +2,6 @@ import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 export class GenericDataSource<T> extends DataSource<T> {
-
   data = new BehaviorSubject<T[]>([]);
   originalData: T[] = [];
 
@@ -16,5 +15,4 @@ export class GenericDataSource<T> extends DataSource<T> {
   }
 
   disconnect() {}
-
 }
