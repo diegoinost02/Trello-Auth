@@ -3,6 +3,17 @@ import { inject } from '@angular/core';
 import { TokenService } from "@services/token.service";
 
 export const redirectGuard: CanActivateFn = () => {
+  const isValidToken = inject(TokenService).isValidToken();
+  const router = inject(Router);
+
+  if (isValidToken) {
+    router.navigate(['/app']);
+  }
+  return true;
+};
+
+// sin validar la expiracion del token
+export const redirectGuardWithoutExpiration: CanActivateFn = () => {
   const token = inject(TokenService).getToken();
   const router = inject(Router);
 
